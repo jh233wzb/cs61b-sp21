@@ -33,7 +33,7 @@ public class TestBuggyAList {
   public void randomizedTest() {
       AListNoResizing<Integer> correct = new AListNoResizing<Integer>();
       BuggyAList<Integer> broken = new BuggyAList<Integer>();
-      int N = 5000;
+      int N = 2000;
       for (int i = 0; i < N; i += 1) {
           int operationNumber = StdRandom.uniform(0, 4);
           if (operationNumber == 0) {
@@ -41,22 +41,27 @@ public class TestBuggyAList {
               correct.addLast(randVal);
               broken.addLast(randVal);
           } else if (operationNumber == 1) {
-              correct.size();
-              broken.size();
+              assertEquals(correct.size(), broken.size());
           }else if (operationNumber == 2){
+              /*
               if (correct.size() != 0){
                   correct.getLast();
               }
               if (broken.size() != 0){
                   broken.getLast();
               }
+              */
+              if (correct.size() != 0 && broken.size() != 0){assertEquals(correct.getLast(), broken.getLast());}
           } else if (operationNumber == 3) {
+              /*
               if (correct.size() != 0){
                   correct.removeLast();
               }
               if (broken.size() != 0){
                   broken.removeLast();
               }
+              */
+              if (correct.size() != 0 && broken.size() !=0) {assertEquals(correct.removeLast(), broken.removeLast());}
           }
       }
   }

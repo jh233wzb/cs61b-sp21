@@ -29,8 +29,8 @@ public class TimeAList {
         AList<Integer> opCounts = new AList<>();
         for (int i = 1000; i < 128_000; i *= 2) {
             Ns.addLast(i);
-            double start = System.currentTimeMillis();
             int opCount = 0;
+            double start = System.currentTimeMillis();
             for (int j = 0; j <= i; j++) {
                 test_list.addLast(j);
                 opCount += 1;
